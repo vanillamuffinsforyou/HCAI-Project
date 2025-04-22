@@ -1,0 +1,165 @@
+Title,Description,Steps,Code Example,Time Complexity (Worst),Space Complexity
+Bubble Sort,Bubble sort is a sorting algorithm that compares two adjacent elements and swaps them until they are in the intended order.,"Starting from the first index, compare the first and the second elements.
+If the first element is greater than the second element, they are swapped.
+Now, compare the second and the third elements. Swap them if they are not in order.
+The above process goes on until the last element.
+		
+Compare the Adjacent Elements","bubbleSort(array)
+  for i <- 1 to sizeOfArray - 1
+    for j <- 1 to sizeOfArray - 1 - i
+      if leftElement > rightElement
+        swap leftElement and rightElement
+end bubbleSort",,
+Selection Sort Algorithm,Selection sort is a sorting algorithm that selects the smallest element from an unsorted list in each iteration and places that element at the beginning of the unsorted list.,"Set the first element as minimum.
+
+		
+Select first element as minimum
+Compare minimum with the second element. If the second element is smaller than minimum, assign the second element as minimum.
+
+		Compare minimum with the third element. Again, if the third element is smaller, then assign minimum to the third element otherwise do nothing. The process goes on until the last element.
+		
+Compare minimum with the remaining elements
+After each iteration, minimum is placed in the front of the unsorted list.
+		
+Swap the first with minimum
+For each iteration, indexing starts from the first unsorted element. Step 1 to 3 are repeated until all the elements are placed at their correct positions.
+		
+The first iteration
+
+
+The second iteration
+
+
+The third iteration
+
+
+The fourth iteration","selectionSort(array, size)
+  for i from 0 to size - 1 do
+    set i as the index of the current minimum
+    for j from i + 1 to size - 1 do
+      if array[j] < array[current minimum]
+        set j as the new current minimum index
+    if current minimum is not i
+      swap array[i] with array[current minimum]
+end selectionSort",,
+Insertion Sort Algorithm,Insertion sort is a sorting algorithm that places an unsorted element at its suitable place in each iteration.,"The first element in the array is assumed to be sorted. Take the second element and store it separately in key.
+
+		Compare key with the first element. If the first element is greater than key, then key is placed in front of the first element.
+
+		
+If the first element is greater than key, then key is placed in front of the first element.
+Now, the first two elements are sorted.
+
+		Take the third element and compare it with the elements on the left of it. Placed it just behind the element smaller than it. If there is no element smaller than it, then place it at the beginning of the array.
+		
+Place 1 at the beginning
+Similarly, place every unsorted element at its correct position.
+		
+Place 4 behind 1
+
+
+Place 3 behind 1 and the array is sorted","insertionSort(array)
+  mark first element as sorted
+  for each unsorted element X
+    'extract' the element X
+    for j <- lastSortedIndex down to 0
+      if current element j > X
+        move sorted element to the right by 1
+    break loop and insert X here
+end insertionSort",,
+Merge Sort Algorithm,Merge Sort is one of the most popular sorting algorithms that is based on the principle of Divide and Conquer Algorithm.,,"MergeSort(A, p, r):
+    if p > r 
+        return
+    q = (p+r)/2
+    mergeSort(A, p, q)
+    mergeSort(A, q+1, r)
+    merge(A, p, q, r)",,
+Quicksort Algorithm,Quicksort is a sorting algorithm based on the divide and conquer approach where,"A pointer is fixed at the pivot element. The pivot element is compared with the elements beginning from the first index.
+		
+Comparison of pivot element with element beginning from the first index
+If the element is greater than the pivot element, a second pointer is set for that element.
+		
+If the element is greater than the pivot element, a second pointer is set for that element.
+Now, pivot is compared with other elements. If an element smaller than the pivot element is reached, the smaller element is swapped with the greater element found earlier.
+		
+Pivot is compared with other elements.
+Again, the process is repeated to set the next greater element as the second pointer. And, swap it with another smaller element.
+		
+The process is repeated to set the next greater element as the second pointer.
+The process goes on until the second last element is reached.
+		
+The process goes on until the second last element is reached.
+Finally, the pivot element is swapped with the second pointer.
+		
+Finally, the pivot element is swapped with the second pointer.","quickSort(array, leftmostIndex, rightmostIndex)
+  if (leftmostIndex < rightmostIndex)
+    pivotIndex <- partition(array,leftmostIndex, rightmostIndex)
+    quickSort(array, leftmostIndex, pivotIndex - 1)
+    quickSort(array, pivotIndex, rightmostIndex)
+
+partition(array, leftmostIndex, rightmostIndex)
+  set rightmostIndex as pivotIndex
+  storeIndex <- leftmostIndex - 1
+  for i <- leftmostIndex + 1 to rightmostIndex
+  if element[i] < pivotElement
+    swap element[i] and element[storeIndex]
+    storeIndex++
+  swap pivotElement and element[storeIndex+1]
+return storeIndex + 1",,
+Heap Sort Algorithm,Heap Sort is a popular and efficient sorting algorithm in computer programming. Learning how to write the heap sort algorithm requires knowledge of two types of data structures - arrays and trees.,"Since the tree satisfies Max-Heap property, then the largest item is stored at the root node.
+Swap: Remove the root element and put at the end of the array (nth position) Put the last item of the tree (heap) at the vacant place.
+Remove: Reduce the size of the heap by 1.
+Heapify: Heapify the root element again so that we have the highest element at root.
+The process is repeated until all the items of the list are sorted.","Left child of 1 (index 0)
+= element in (2*0+1) index 
+= element in 1 index 
+= 12
+
+
+Right child of 1
+= element in (2*0+2) index
+= element in 2 index 
+= 9
+
+Similarly,
+Left child of 12 (index 1)
+= element in (2*1+1) index
+= element in 3 index
+= 5
+
+Right child of 12
+= element in (2*1+2) index
+= element in 4 index
+= 6",,
+Radix Sort Algorithm,"Radix sort is a sorting algorithm that sorts the elements by first grouping the individual digits of the same place value. Then, sort the elements according to their increasing/decreasing order.","Find the largest element in the array, i.e. max. Let X be the number of digits in max. X is calculated because we have to go through all the significant places of all elements.
+
+		In this array [121, 432, 564, 23, 1, 45, 788], we have the largest number 788. It has 3 digits. Therefore, the loop should go up to hundreds place (3 times).
+Now, go through each significant place one by one.
+
+		Use any stable sorting technique to sort the digits at each significant place. We have used counting sort for this.
+
+		Sort the elements based on the unit place digits (X=0).
+		
+Using counting sort to sort elements based on unit place
+Now, sort the elements based on digits at tens place.
+		
+Sort elements based on tens place
+Finally, sort the elements based on the digits at hundreds place.
+		
+Sort elements based on hundreds place","radixSort(array)
+  d <- maximum number of digits in the largest element
+  create d buckets of size 0-9
+  for i <- 0 to d
+    sort the elements according to ith place digits using countingSort
+
+countingSort(array, d)
+  max <- find largest element among dth place elements
+  initialize count array with all zeros
+  for j <- 0 to size
+    find the total count of each unique digit in dth place of elements and
+    store the count at jth index in count array
+  for i <- 1 to max
+    find the cumulative sum and store it in count array itself
+  for j <- size down to 1
+    restore the elements to array
+    decrease count of each element restored by 1",,
